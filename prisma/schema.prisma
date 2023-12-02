@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Beer {
+  id          Int    @id @default(autoincrement())
+  brand       String
+  name        String
+  price       Int
+  description String
+  rating      Int
+  imageUrl    String @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")
+  quantity    Int    @default(100)
+}
