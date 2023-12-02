@@ -1,0 +1,13 @@
+# Environment variables
+env/
+.env
+
+# Private Node Modules
+node_modules/
+
+# Distribution
+dist/
+build/
+
+# Mac/OSX
+.DS_Store
