@@ -1,7 +1,11 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import prisma from "../../prisma/client";
 
-export async function getBeers(req: Request, res: Response) {
+export async function getBeers(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const filters = req.query;
 
   const { minPrice, maxPrice, minRating } = filters;
@@ -29,21 +33,25 @@ export async function getBeers(req: Request, res: Response) {
 
     res.send(products);
   } catch (error) {
-    console.log(error);
-    res.status(500).send("Something went wrong. Check your request query.");
+    next(error);
   }
 }
 
-export async function getBeerById(req: Request, res: Response) {
+export async function getBeerById(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const { id } = req.params;
 
   try {
     const beer = await prisma.beer.findUnique({ where: { id: Number(id) } });
 
-    if (!beer) return res.status(404).send("Beer with given id does not exist.")
+    if (!beer)
+      return res.status(404).send("Beer with given id does not exist.");
 
     res.send(beer);
   } catch (error) {
-    res.status(500).send("Something went wrong. Check your request query.");
+    next(error);
   }
 }
