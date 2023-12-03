@@ -33,3 +33,17 @@ export async function getBeers(req: Request, res: Response) {
     res.status(500).send("Something went wrong. Check your request query.");
   }
 }
+
+export async function getBeerById(req: Request, res: Response) {
+  const { id } = req.params;
+
+  try {
+    const beer = await prisma.beer.findUnique({ where: { id: Number(id) } });
+
+    if (!beer) return res.status(404).send("Beer with given id does not exist.")
+
+    res.send(beer);
+  } catch (error) {
+    res.status(500).send("Something went wrong. Check your request query.");
+  }
+}
