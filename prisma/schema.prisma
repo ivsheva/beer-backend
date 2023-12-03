@@ -12,12 +12,14 @@ datasource db {
 }
 
 model Beer {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   brand       String
   name        String
+  oldPrice    Int?
   price       Int
-  description String
+  description String? @db.VarChar(255)
   rating      Int
-  imageUrl    String @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")
-  quantity    Int    @default(100)
+  imageUrl    String  @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")
+  quantity    Int     @default(100)
+  genre       String
 }
