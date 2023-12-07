@@ -16,10 +16,10 @@ model Beer {
   brand       String
   name        String
   oldPrice    Int?
-  price       Int
+  price       Float
   description String? @db.VarChar(255)
   rating      Int
-  imageUrl    String  @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg")
+  imageUrl    String  @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg") @db.VarChar(255)
   quantity    Int     @default(100)
-  genre       String
+  type        String  @default("main")
 }
