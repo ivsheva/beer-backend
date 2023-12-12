@@ -20,6 +20,8 @@ model Beer {
   description String? @db.VarChar(255)
   rating      Int
   imageUrl    String  @default("https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg") @db.VarChar(255)
-  quantity    Int     @default(100)
+  quantity    Int     @default(1)
   type        String  @default("main")
+  tag         String  @default("product") // to differentiate between products and slided products (products in the main page)
+  isPopular   Boolean @default(false)
 }
