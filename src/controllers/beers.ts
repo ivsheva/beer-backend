@@ -8,12 +8,13 @@ export async function getBeers(
 ) {
   const filters = req.query;
 
-  const { minPrice, maxPrice, minRating } = filters;
+  const { minPrice, maxPrice, minRating, isPopular } = filters;
 
   // Remove used properties
   delete filters.minPrice;
   delete filters.maxPrice;
   delete filters.minRating;
+  delete filters.isPopular;
 
   const where = {
     price: {
@@ -23,6 +24,7 @@ export async function getBeers(
     rating: {
       gt: Number(minRating) || undefined,
     },
+    isPopular: Boolean(isPopular) || undefined,
     ...filters,
   };
 
