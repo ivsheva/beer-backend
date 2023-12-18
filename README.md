@@ -1,6 +1,6 @@
 # Beer backend
 
-Beer backend - is a lightweight web service used for my React Application named beer-shop developed.
+Beer backend - is a lightweight web service used for my React Application named beer-shop.
 
 ## Technologies used
 
@@ -17,3 +17,7 @@ Beer backend - is a lightweight web service used for my React Application named 
 4. Run `prisma migrate dev` or `prisma db push` to migrate prisma schema.
 5. Uncomment line with `populate()` if you want to populate your db with db provided beer data.
 6. Run `npm run dev` to start a localhost
+7. Go to `/api/beers`. For now, it's the only API route.
+8. Done!
+
+Also, there is a deployed version of this [web service](https://beer-shop-service.onrender.com) on render.
