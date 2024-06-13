@@ -13,4 +13,12 @@ async function populate() {
   return "Database is populated with beer data!";
 }
 
+// execute populate
+populate()
+  .then((res) => console.log(res))
+  .catch((error) => {
+    console.error("Error populating database:", error);
+    process.exit(1); // Exit with error code
+  });
+
 export default populate;
