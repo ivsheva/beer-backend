@@ -1,16 +1,16 @@
-import prisma from "../../prisma/client"
-import beers from "./beers"
+import prisma from "../../prisma/client";
+import beers from "./beers";
 
-async function populate(){
+async function populate() {
   const existingData = await prisma.beer.findMany();
 
-  if (existingData) return "Data is already populated";
+  if (existingData.length > 0) return "Data is already populated";
 
   await prisma.beer.createMany({
-    data: beers
-  })
+    data: beers,
+  });
 
-  return "Database is populated with beer data!"
+  return "Database is populated with beer data!";
 }
 
-export default populate
+export default populate;

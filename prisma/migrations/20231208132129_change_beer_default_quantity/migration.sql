@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `beer` MODIFY `quantity` INTEGER NOT NULL DEFAULT 1;

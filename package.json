@@ -6,7 +6,12 @@
   "scripts": {
     "build": "npx tsc",
     "start": "npx tsc && node build/src/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "populate": "ts-node src/population/populate.ts",
+    "prisma:dev:deploy": "npx prisma migrate deploy",
+    "db:dev:rm": "docker compose rm -s -f -v",
+    "db:dev:up": "docker compose up -d && sleep 1 && npm run prisma:dev:deploy",
+    "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up"
   },
   "keywords": [],
   "author": "ivsheva",
